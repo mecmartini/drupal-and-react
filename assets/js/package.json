@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack",
     "build:dev": "webpack",
-    "start": "webpack --watch --progress"
+    "start": "webpack --watch --progress",
+    "format": "prettier --write src/**/*.ts{,x}"
   },
   "keywords": [],
   "author": "",
