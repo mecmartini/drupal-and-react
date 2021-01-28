@@ -24,12 +24,17 @@ const config = {
     rules: [
       {
         test: /\.(t|j)sx?$/,
+        enforce: "pre",
         use: [
           {
             loader: "ts-loader",
             options: {
               getCustomTransformers: () => ({ before: [styledComponentsTransformer] })
             }
+          },
+          {
+            loader: isDevMode ? require.resolve('eslint-loader') : null,
+            options: isDevMode ? { eslintPath: require.resolve('eslint') } : null
           }
         ],
         exclude: /node_modules/
