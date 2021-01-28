@@ -4,7 +4,7 @@ interface AppProps {
   content: string[];
 }
 
-const App:React.FunctionComponent<AppProps> = (props) => {
+const App:React.FunctionComponent<AppProps> = (props: AppProps) => {
   const { content } = props;
 
   return (

@@ -6,7 +6,11 @@ import App from './App';
 import './assets/css/global.css';
 
 declare global {
-  interface Window { drupalSettings: any; }
+  interface Window {
+    drupalSettings: {
+      drupal_and_react_app: settings
+    }
+  }
 }
 
 interface Elements {
