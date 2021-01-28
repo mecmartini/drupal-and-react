@@ -29017,7 +29017,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const App = (props) => {
     const { content } = props;
-    return (React.createElement(React.Fragment, null, content.map((element, key) => (React.createElement("div", { key: key }, element)))));
+    return (React.createElement(React.Fragment, null, content.map((element, key) => {
+        const mykey = `element-${key}`;
+        return React.createElement("div", { key: mykey }, element);
+    })));
 };
 exports.default = App;
 

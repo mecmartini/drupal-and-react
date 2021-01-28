@@ -1,15 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import App from './App';
+import App from "./App";
 
-import './assets/css/global.css';
+import "./assets/css/global.css";
 
 declare global {
   interface Window {
     drupalSettings: {
-      drupal_and_react_app: settings
-    }
+      drupal_and_react_app: Settings;
+    };
   }
 }
 
@@ -19,11 +19,12 @@ interface Elements {
   content: string[];
 }
 
-interface settings {
+interface Settings {
   [index: string]: Elements;
 }
 
-const drupalAndReactApp: settings = window.drupalSettings.drupal_and_react_app || {};
+const drupalAndReactApp: Settings =
+  window.drupalSettings.drupal_and_react_app || {};
 
 Object.keys(drupalAndReactApp).forEach((key: string) => {
   const { wrapper, content } = drupalAndReactApp[key];
