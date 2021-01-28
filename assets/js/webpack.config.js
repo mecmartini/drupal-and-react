@@ -33,8 +33,10 @@ const config = {
             }
           },
           {
-            loader: isDevMode ? require.resolve('eslint-loader') : null,
-            options: isDevMode ? { eslintPath: require.resolve('eslint') } : null
+            loader: require.resolve('eslint-loader'),
+            options: {
+              eslintPath: require.resolve('eslint')
+            }
           }
         ],
         exclude: /node_modules/
