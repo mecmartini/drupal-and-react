@@ -1,0 +1,5 @@
+name: 'Drupal and React'
+type: module
+description: 'Example module integration Drupal and ReactJS.'
+core: 8.x
+package: 'Custom'

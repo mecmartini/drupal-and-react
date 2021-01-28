@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Contains drupal_and_react.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileNotFoundException;
+
+/**
+ * Implements hook_help().
+ */
+function drupal_and_react_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the drupal_and_react module.
+    case 'help.page.drupal_and_react':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Example module integration Drupal and ReactJS.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_library_info_build().
+ */
+function drupal_and_react_library_info_build() {
+  $module = \Drupal::moduleHandler()->getModule('drupal_and_react');
+  $module_path = $module->getPath();
+  $js_dev = 'assets/js/dist/app.bundle.js';
+  $js_prod = 'assets/js/build/app.bundle.js';
+
+  $js_src = ( isset($_ENV['NODE_ENV']) && $_ENV['NODE_ENV'] === 'production' ) ? $js_prod : $js_dev;
+  $js_src = file_exists($module_path . '/' . $js_src) ? $js_src : $js_prod;
+
+  $js = [];
+  if ( file_exists($module_path . '/' . $js_src) ) {
+    $js[$js_src] = [
+      'minified' => TRUE,
+      'preprocess' => FALSE,
+    ];
+
+    $libraries = [
+      'app_bundle' => [
+        'version' => 'VERSION',
+        'js' => $js,
+      ],
+    ];
+  }
+  else {
+    throw new FileNotFoundException(
+      $module_path . '/' . $js_src
+    );
+  }
+
+  return $libraries;
+}
