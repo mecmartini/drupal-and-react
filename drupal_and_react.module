@@ -28,14 +28,19 @@ function drupal_and_react_help($route_name, RouteMatchInterface $route_match) {
  * Implements hook_library_info_build().
  */
 function drupal_and_react_library_info_build() {
+  # Load current module path.
   $module = \Drupal::moduleHandler()->getModule('drupal_and_react');
   $module_path = $module->getPath();
+
+  # Set app bundle source for develompent and prodution.
   $js_dev = 'assets/js/dist/app.bundle.js';
   $js_prod = 'assets/js/build/app.bundle.js';
 
+  # Generate app bundle source path
   $js_src = ( isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] === 'production' ) ? $js_prod : $js_dev;
   $js_src = file_exists($module_path . '/' . $js_src) ? $js_src : $js_prod;
 
+  # Build Drupal library.
   $js = [];
   if ( file_exists($module_path . '/' . $js_src) ) {
     $js[$js_src] = [
@@ -51,6 +56,7 @@ function drupal_and_react_library_info_build() {
     ];
   }
   else {
+    # Generate exception if app bundle is not found.
     throw new FileNotFoundException(
       $module_path . '/' . $js_src
     );
