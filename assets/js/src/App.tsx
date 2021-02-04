@@ -11,7 +11,11 @@ const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
     <>
       {content.map((element: string, key: number) => {
         const mykey = `element-${key}`;
-        return <div key={mykey}>{element}</div>;
+        return (
+          <div key={mykey}>
+            <i>{element}</i>
+          </div>
+        );
       })}
     </>
   );

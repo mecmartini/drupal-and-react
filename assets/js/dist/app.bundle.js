@@ -29019,7 +29019,8 @@ const App = (props) => {
     const { content } = props;
     return (React.createElement(React.Fragment, null, content.map((element, key) => {
         const mykey = `element-${key}`;
-        return React.createElement("div", { key: mykey }, element);
+        return (React.createElement("div", { key: mykey },
+            React.createElement("i", null, element)));
     })));
 };
 exports.default = App;
