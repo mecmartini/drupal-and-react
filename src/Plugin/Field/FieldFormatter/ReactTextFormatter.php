@@ -56,15 +56,4 @@ class ReactTextFormatter extends FormatterBase {
     return $build;
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public static function isApplicable(FieldDefinitionInterface $field_definition) {
-    if ( $field_definition->getTargetBundle() === 'map' ) {
-      return TRUE;
-    }
-
-    return True;
-  }
-
 }
