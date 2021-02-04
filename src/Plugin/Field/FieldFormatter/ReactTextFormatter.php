@@ -33,7 +33,8 @@ class ReactTextFormatter extends FormatterBase {
   public function viewElements(FieldItemListInterface $items, $langcode) {
     $elements = [];
     $id = $items->getEntity()->id();
-    $wrapper_id = 'drupal-and-react-app-' . $id;
+    $field_name = $this->fieldDefinition->getItemDefinition()->getFieldDefinition()->getName();
+    $wrapper_id = 'drupal-and-react-app-' . $field_name .'-'. $id;
 
     $build = [
       '#markup' => '<div id="' . $wrapper_id . '"></div>',
