@@ -5,6 +5,7 @@ import App from "./App";
 
 import "./assets/css/global.css";
 
+// Declare type for drupalSettings.
 declare global {
   interface Window {
     drupalSettings: {
@@ -13,6 +14,7 @@ declare global {
   }
 }
 
+// Declare types for the React component.
 interface Elements {
   id: number;
   wrapper: string;
@@ -23,9 +25,11 @@ interface Settings {
   [index: string]: Elements;
 }
 
+// Get Drupal settings.
 const drupalAndReactApp: Settings =
   window.drupalSettings.drupal_and_react_app || {};
 
+// Generate a component for each item/field in drupal_and_react_app.
 Object.keys(drupalAndReactApp).forEach((key: string) => {
   const { wrapper, content } = drupalAndReactApp[key];
   ReactDOM.render(
