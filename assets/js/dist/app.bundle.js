@@ -97,7 +97,7 @@
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n", ""]);
+exports.push([module.i, ".react-text {\n  font-style: italic;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -29018,9 +29018,8 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const App = (props) => {
     const { content } = props;
     return (React.createElement(React.Fragment, null, content.map((element, key) => {
-        const mykey = `element-${key}`;
-        return (React.createElement("div", { key: mykey },
-            React.createElement("i", null, element)));
+        const myKey = `item-${key}`;
+        return (React.createElement("div", { className: "react-text", key: myKey }, element));
     })));
 };
 exports.default = App;
@@ -29071,7 +29070,9 @@ const React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 const ReactDOM = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 const App_1 = __webpack_require__(/*! ./App */ "./src/App.tsx");
 __webpack_require__(/*! ./assets/css/global.css */ "./src/assets/css/global.css");
+// Get Drupal settings.
 const drupalAndReactApp = window.drupalSettings.drupal_and_react_app || {};
+// Generate a component for each item/field in drupal_and_react_app.
 Object.keys(drupalAndReactApp).forEach((key) => {
     const { wrapper, content } = drupalAndReactApp[key];
     ReactDOM.render(React.createElement(React.StrictMode, null,
