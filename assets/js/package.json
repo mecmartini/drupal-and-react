@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production webpack",
     "build:dev": "webpack",
     "start": "webpack --watch --progress",
-    "format": "prettier --write src/**/*.ts{,x}"
+    "format": "prettier --write 'src/**/*.(ts|tsx)'"
   },
   "keywords": [],
   "author": "",
