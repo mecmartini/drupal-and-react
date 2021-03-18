@@ -1,10 +1,6 @@
 const path = require("path");
 const isDevMode = process.env.NODE_ENV !== "production";
 
-// typescript-plugin-styled-components
-const createStyledComponentsTransformer = require('typescript-plugin-styled-components').default;
-const styledComponentsTransformer = createStyledComponentsTransformer();
-
 const config = {
   entry: {
     main: ["./src/index.tsx"]
@@ -28,9 +24,6 @@ const config = {
         use: [
           {
             loader: "ts-loader",
-            options: {
-              getCustomTransformers: () => ({ before: [styledComponentsTransformer] })
-            }
           },
           {
             loader: require.resolve('eslint-loader'),
