@@ -13,6 +13,5 @@
   ],
   "exclude": [
     "node_modules",
-    "**/L.Control.Center.tsx"
   ]
 }
