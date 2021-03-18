@@ -13,7 +13,7 @@ const App: React.FunctionComponent<AppProps> = (props: AppProps) => {
         const myKey = `item-${key}`;
         return (
           <div className="react-text" key={myKey}>
-            {element}
+            <i>{element}</i>
           </div>
         );
       })}
